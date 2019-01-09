@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public interface ProductDao extends JpaRepository<Product, Integer> {
@@ -19,4 +20,7 @@ public interface ProductDao extends JpaRepository<Product, Integer> {
 
     @Query("SELECT id, nom, prix FROM Product p WHERE p.prix > :prixLimit")
     List<Product>  chercherUnProduitCher(@Param("prixLimit") int prix);
+
+    List<Product> findAllByOrderByNomAsc();
+
 }
